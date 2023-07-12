@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    image: weather:2.0
+    image: weather:latest
     build: ./api
     ports:
       - "6000:5000"
