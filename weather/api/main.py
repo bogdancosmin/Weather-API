@@ -12,7 +12,7 @@ redis_conn = redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379"))
 def index():
     return "Usage: http://<hostname>[:<prt>]/api/<url>"
 
-@app.route("/api/")
+@app.route("/api")
 def api():
     latitude = request.args.get("latitude")
     longitude = request.args.get("longitude")
