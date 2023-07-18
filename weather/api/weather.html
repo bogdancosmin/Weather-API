@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Retrieval</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #F5F5F5;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .form-field {
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Longitude and Latitude</h1>
+
+        <div class="form-field">
+            <label for="longitude">Longitude:</label>
+            <input id="longitude" type="text">
+        </div>
+
+        <div class="form-field">
+            <label for="latitude">Latitude:</label>
+            <input id="latitude" type="text">
+        </div>
+
+        <button id="submit">Get Weather Data</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+            const longitude = document.getElementById('longitude').value;
+            const latitude = document.getElementById('latitude').value;
+            const url = `http://localhost:6000/api/?longitude=${longitude}&latitude=${latitude}`;
+
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = JSON.stringify(data, null, 4);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
