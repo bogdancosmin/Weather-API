@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    image: weatherkafka
+    image: weatherkafka:3
     build: ./api
     ports:
-      - "5001:5000"
+      - "5001:8000"
