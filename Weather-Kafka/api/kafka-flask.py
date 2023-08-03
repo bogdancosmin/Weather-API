@@ -5,6 +5,7 @@ import http.client
 from confluent_kafka import Producer
 from time import gmtime
 from flask import Flask, request
+import subprocess
 
 logger = logging.getLogger('')
 logger.setLevel(logging.DEBUG)
@@ -69,6 +70,8 @@ def weather_producer(latitude, longitude):
             producer.produce(topic, key=record_key, value=record_value, on_delivery=delivery_callback)
 
         logger.info('Done producing.')
+         # Run kafka-consumer.py after producing
+        subprocess.run(["python", "kafka-consumer.py"])
     except KeyboardInterrupt:
         logger.info('Caught KeyboardInterrupt, stopping.')
     finally:
