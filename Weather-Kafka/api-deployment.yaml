@@ -25,10 +25,17 @@ spec:
         io.kompose.service: api
     spec:
       containers:
-        - image: weatherkafka:3
+        - image: weatherkafka:4
           name: api
+          volumeMounts:
+            - name: secret-volume
+              mountPath: /etc/secret-volume
           ports:
             - containerPort: 8000
           resources: {}
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: certificate
       restartPolicy: Always
 status: {}
