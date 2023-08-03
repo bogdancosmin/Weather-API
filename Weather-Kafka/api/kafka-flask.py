@@ -49,9 +49,9 @@ def weather_producer(latitude, longitude):
         'bootstrap.servers': 'platform.local:31757',
         'security.protocol': 'SSL',
         'ssl.endpoint.identification.algorithm': 'none',
-        'ssl.certificate.location': _full_path_of('/etc/ssl/private/client.pem'),
-        'ssl.key.location': _full_path_of('/etc/ssl/private/clientkey.pem'),
-        'ssl.ca.location': _full_path_of('/etc/ssl/private/client.pem'),
+        'ssl.certificate.location': _full_path_of('/etc/secret-volume/client.pem'),
+        'ssl.key.location': _full_path_of('/etc/secret-volume/clientkey.pem'),
+        'ssl.ca.location': _full_path_of('/etc/secret-volume/client.pem'),
         'acks': 'all',
         'logger': logger
     }

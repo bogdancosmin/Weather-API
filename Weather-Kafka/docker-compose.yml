@@ -2,7 +2,11 @@ version: '3'
 
 services:
   api:
-    image: weatherkafka:3
+    image: weatherkafka:6
     build: ./api
     ports:
       - "5001:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+  redis:
+    image: redis
